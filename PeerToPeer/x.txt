@@ -1,0 +1,1 @@
+The above method is easy and straightforward to initialize a structure variable. However, C language also supports value initialization for structure variable. Means, you can initialize a structure to some default value during its variable declaration.
