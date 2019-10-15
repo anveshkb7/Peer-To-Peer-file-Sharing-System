@@ -287,7 +287,7 @@ int main(int argc, char *argv[])
 		commandTokenizer(input_command);
 		cout<<command[1]<<" "<<command[2]<<endl;
 		
-		if(command[0]=="cu")
+		if(command[0]=="create_user")
 		{
 			fflush(stdout);
 			write(sockfd,"cu",3);
@@ -338,7 +338,7 @@ int main(int argc, char *argv[])
 				printf("Server: %s",recvBuffer);	
 			}
 		}
-		else if(command[0]=="cg")
+		else if(command[0]=="create_group")
 		{
 			char groupOwn[255];
 			char groupId[10];
@@ -355,7 +355,7 @@ int main(int argc, char *argv[])
 			read(sockfd,recvBuffer,255);
 			printf("Server: %s",recvBuffer);
 		}
-		else if(command[0]=="jg")
+		else if(command[0]=="join_group")
 		{
 			char groupId[10];
 			
@@ -369,7 +369,7 @@ int main(int argc, char *argv[])
 			printf("Server: %s", recvBuffer);
 
 		}
-		else if(command[0]=="ar")
+		else if(command[0]=="accept_request")
 		{
 			char groupId[10];
 			char userID[20];
@@ -385,7 +385,7 @@ int main(int argc, char *argv[])
 			read(sockfd,recvBuffer,255);
 			printf("Server : %s",recvBuffer);
 		}
-		else if(command[0]=="lig")
+		else if(command[0]=="list_groups")
 		{
 			char numberOfGroups[20];
 			write(sockfd,"lg",3);
@@ -397,7 +397,7 @@ int main(int argc, char *argv[])
 			printf("%s",recvBuffer);
 
 		}
-		else if(command[0]=="leg")
+		else if(command[0]=="leave_group")
 		{
 			char groupId[10];
 			write(sockfd,"leg",5);
@@ -411,7 +411,7 @@ int main(int argc, char *argv[])
 			printf("Server : %s",recvBuffer);
 
 		}
-		else if(command[0]=="lir")
+		else if(command[0]=="list_request")
 		{
 			char groupId[10];
 			write(sockfd,"lir",4);
@@ -424,7 +424,7 @@ int main(int argc, char *argv[])
 			read(sockfd,recvBuffer,2048);
 			printf("%s",recvBuffer);
 		}
-		else if(command[0]=="uf")
+		else if(command[0]=="upload_file")
 		{
 			char file[20];
 			char groupId[10];
@@ -482,7 +482,7 @@ int main(int argc, char *argv[])
 			read(sockfd,recvBuffer,255);
 			printf("Server : %s",recvBuffer);
 		}
-		else if(command[0]=="df")
+		else if(command[0]=="download_file")
 		{
 			char gId[10];
 			char fileName[50];
@@ -534,6 +534,13 @@ int main(int argc, char *argv[])
 			// 	printf("Server : %s",recvBuffer);
 			// }
 			// fflush(stdin);
+		}
+		else if(command[0]=="logout")
+		{
+			write(sockfd,"lo",3);
+			
+			cout<<"You have Succefully logged out.\n";
+			exit(0);		
 		}
 		else
 		{

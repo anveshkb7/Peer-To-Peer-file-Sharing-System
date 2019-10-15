@@ -557,7 +557,13 @@ void *readd(void *arg)
 			// 	write(connfd[*id],"You are not part of the group.\n",strlen("You are not part of the group.\n"));
 			// }
 		}
-		
+		else if(strcmp(buffer,"lo"))
+		{
+			auto it=connIdAndUser.find(to_string(connfd[*id]));
+			connIdAndUser.erase(it);
+			loggedIn[*id]=0;
+			pthread_exit(NULL);
+		}
 		
 		cout<<"Users logged in are : "<<endl;
 		map<string,string>::iterator it;
