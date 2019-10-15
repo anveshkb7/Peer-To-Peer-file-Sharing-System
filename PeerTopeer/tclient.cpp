@@ -119,7 +119,7 @@ void *clientClient(void *arg)
 	char user[255];
 	char pass[255];
 	
-	cout<<"User id of Client requesting file is"<<f.userID<<endl;
+	// cout<<"User id of Client requesting file is"<<f.userID<<endl;
 	string p = extractPortNumber(f.userID);
 	// cout<<"Port number in string  is : "<<p;
 	// portno = atoi(p.c_str());
@@ -180,7 +180,7 @@ void *clientServer(void *arg)
 	struct stat f;
 	int fsize;
 	
-	cout<<"Server of client called\n";
+	// cout<<"Server of client called\n";
 	int sockfd, newsockfd, portno,n;
 	struct sockaddr_in server_address, client_address;
 	socklen_t clilen;
@@ -193,7 +193,7 @@ void *clientServer(void *arg)
 	}
 
 	bzero((char *)&server_address, sizeof(server_address));
-	cout<<"User id of Client requesting file is"<<userName<<endl;
+	// cout<<"User id of Client requesting file is"<<userName<<endl;
 	
 	string p = extractPortNumber(userName);
 	
